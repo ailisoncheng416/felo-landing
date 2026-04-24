@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评价奖励 | Felo 字幕</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #f8fafc;
+      color: #1f2937;
+    }
+    .app-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #f8fafc;
+      color: #1f2937;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      padding: 20px 0;
+    }
+    .sidebar-logo {
+      padding: 0 20px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .sidebar-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    .sidebar-logo-text {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .sidebar-nav {
+      flex: 1;
+      padding: 0 12px;
+    }
+    .nav-group {
+      margin-bottom: 16px;
+    }
+    .nav-group-title {
+      font-size: 11px;
+      color: #9ca3af;
+      padding: 8px 12px 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      color: #4b5563;
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .nav-item:hover {
+      background: #e5e7eb;
+      color: #1f2937;
+    }
+    .nav-item.active {
+      background: rgba(68, 126, 255, 0.1);
+      color: #447eff;
+    }
+    .nav-icon {
+      width: 18px;
+      height: 18px;
+    }
+    .sidebar-user {
+      padding: 16px 20px;
+      border-top: 1px solid #e5e7eb;
+      cursor: pointer;
+    }
+    .sidebar-user:hover {
+      background: #f1f5f9;
+    }
+    .user-email {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+    .user-balance {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .balance-label {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+    .balance-time {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .recharge-btn {
+      font-size: 12px;
+      color: #447eff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 240px;
+      display: flex;
+      flex-direction: column;
+      background: #f8fafc;
+    }
+    .top-bar {
+      background: white;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .top-bar-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .content {
+      padding: 32px;
+      max-width: 900px;
+    }
+
+    /* Section Title */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #447eff 0%, #6381ff 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .section-title-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    .section-desc {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* Platform Cards */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .platform-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      transition: all 0.2s;
+      display: block;
+    }
+    .platform-card:hover {
+      border-color: #447eff;
+      box-shadow: 0 4px 12px rgba(68, 126, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    .platform-header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .platform-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .platform-reward-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .platform-icon-sm {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .platform-icon-sm img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .reward-badge {
+      background: linear-gradient(135deg, #447eff 0%, #6381ff 100%);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .reward-detail {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+    .reward-detail strong {
+      color: #447eff;
+      font-weight: 600;
+    }
+    .platform-cta {
+      margin-top: 16px;
+      width: 100%;
+      background: transparent;
+      color: #447eff;
+      border: 1.5px solid #447eff;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s;
+    }
+    .platform-cta:hover {
+      background: #447eff;
+      color: white;
+    }
+
+    /* Steps Card */
+    .steps-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid #e5e7eb;
+    }
+    .steps-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 20px;
+    }
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .step-item {
+      display: flex;
+      gap: 16px;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #a5c2ff 0%, #447eff 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .step-text {
+      font-size: 13px;
+      color: #4b5563;
+      line-height: 1.6;
+      padding-top: 4px;
+    }
+    .email-box {
+      background: #f3f4f6;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    .email-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .email-row:last-child {
+      margin-bottom: 0;
+    }
+    .email-label {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .email-value {
+      font-size: 13px;
+      color: #1f2937;
+    }
+    .email-value span {
+      color: #447eff;
+      font-weight: 500;
+    }
+
+    /* Rules Card */
+    .rules-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #e5e7eb;
+    }
+    .rules-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 16px;
+    }
+    .rules-list {
+      list-style: none;
+    }
+    .rules-list li {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .rules-list li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #447eff;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .platform-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <img src="https://subtitles.felo.me/assets/images/image%206.svg" alt="Felo" style="width:36px;height:36px;">
+        <span class="sidebar-logo-text">Felo 字幕</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            评价奖励
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            使用客户端，体验更流畅
+          </div>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">记录</div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+            历史记录
+          </div>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">词库</div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            识别词库
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            翻译词库
+          </div>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">支持</div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            意见反馈
+          </div>
+          <div class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            更多产品
+          </div>
+        </div>
+      </nav>
+      <div class="sidebar-user">
+        <div class="user-email">user@example.com</div>
+        <div class="user-balance">
+          <div>
+            <div class="balance-label">余额</div>
+            <div class="balance-time">14:21:58</div>
+          </div>
+          <button class="recharge-btn">充值 →</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="top-bar">
+        <h1 class="top-bar-title">评价奖励</h1>
+      </div>
+
+      <div class="content">
+        <!-- Section Header -->
+        <div class="section-header">
+          <div>
+            <h2 class="section-title-text">赚取免费翻译时长</h2>
+            <p class="section-desc">分享使用体验，领取翻译时间奖励</p>
+          </div>
+        </div>
+
+        <!-- Platform Rewards -->
+        <div class="platform-grid">
+          <!-- Chrome 网上应用店 -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-name">
+                <div class="platform-icon-sm"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt="Chrome"></div>
+                Chrome 网上应用店
+              </div>
+              <div class="platform-reward-row">
+                <div class="reward-badge">+30分钟</div>
+              </div>
+            </div>
+            <p class="reward-detail">
+              完成评价后可获得 <strong>30分钟</strong> 翻译时长
+            </p>
+            <a href="https://chromewebstore.google.com/detail/felo-subtitles-chatgpt-li/ponokiofkijoolhebggofhhibnafebna" target="_blank" class="platform-cta">写评价</a>
+          </div>
+
+          <!-- G2 -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-name">
+                <div class="platform-icon-sm"><img src="data:image/png;base64,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" alt="G2"></div>
+                G2
+              </div>
+              <div class="platform-reward-row">
+                <div class="reward-badge">+60分钟</div>
+              </div>
+            </div>
+            <p class="reward-detail">
+              完成评价后可获得 <strong>60分钟</strong> 翻译时长
+            </p>
+            <a href="https://www.g2.com/products/felo-subtitles/reviews" target="_blank" class="platform-cta">写评价</a>
+          </div>
+
+          <!-- ITreview -->
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-name">
+                <div class="platform-icon-sm"><img src="data:image/png;base64,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" alt="ITreview"></div>
+                ITreview
+              </div>
+              <div class="platform-reward-row">
+                <div class="reward-badge">+60分钟</div>
+              </div>
+            </div>
+            <p class="reward-detail">
+              完成评价后可获得 <strong>60分钟</strong> 翻译时长
+            </p>
+            <a href="https://www.itreview.jp/products/felo-meet/reviews" target="_blank" class="platform-cta">写评价</a>
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="steps-card">
+          <h3>📝 领取奖励流程</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-text">点击上方卡片，前往对应平台发布评价</div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-text">发布 4 星以上评价</div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-text">截图评价页面并附上您的账号信息发送至 <a href="mailto:support@sparticle.com" style="color:#447eff;font-weight:500;">support@sparticle.com</a></div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-text">审核通过后，翻译时长将自动到账（5个工作日内）</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rules -->
+        <div class="rules-card">
+          <h3>规则与条件</h3>
+          <ul class="rules-list">
+            <li>每个账号每个平台限领一次</li>
+            <li>需 4 星及以上评价</li>
+            <li>处理时间：5 个工作日内</li>
+            <li>翻译时长自到账日起 180 天内有效</li>
+            <li>若评价在到账后 90 天内被删除，奖励将被收回</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

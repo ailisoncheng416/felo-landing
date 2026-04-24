@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国際会議・カンファレンスでのAI同時通訳 | Felo Subtitle</title>
+    <meta name="description" content="Felo Subtitleは国際会議・カンファレンス・セミナーで活躍するAIリアルタイム翻訳ツール。20言語対応、専門用語辞書、AI議事録自動作成で同時通訳コストを最大80%削減。">
+    <meta property="og:title" content="Felo Subtitle - 国際会議でのAI同時通訳ソリューション">
+    <meta property="og:description" content="20言語対応のAIリアルタイム翻訳で国際会議の言語の壁を越える。同時通訳コストを最大80%削減、議事録作成時間を90%短縮。">
+    <meta property="og:type" content="website">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3B82F6;
+            --primary-dark: #2563EB;
+            --primary-light: #60A5FA;
+            --text-dark: #1F2937;
+            --text-gray: #6B7280;
+            --text-light: #F9FAFB;
+            --bg-light: #FFFFFF;
+            --bg-gray: #F3F4F6;
+            --bg-blue: #EFF6FF;
+            --border-color: #E5E7EB;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .nav-logo img {
+            height: 30px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-logo-text {
+            font-size: 1.125rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links > li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-dropdown > a::after {
+            content: " ▾";
+            font-size: 0.7em;
+            margin-left: 0.15rem;
+            opacity: 0.7;
+        }
+
+        .nav-dropdown {
+            padding-bottom: 0.5rem;
+            margin-bottom: -0.5rem;
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 0;
+            min-width: 170px;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(-6px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown:focus-within .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-dropdown-menu li {
+            padding: 0;
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.6rem 1.25rem;
+            white-space: nowrap;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.925rem;
+        }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--bg-blue);
+            color: var(--primary-color);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.625rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-blue);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            font-size: 0.925rem;
+        }
+
+        .btn-ghost:hover {
+            color: var(--primary-color);
+            background: transparent;
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* Hero Section - Full-width banner with image */
+        .hero {
+            position: relative;
+            min-height: 620px;
+            padding: 10rem 2rem 7rem;
+            background-image:
+                linear-gradient(135deg, rgba(10, 22, 45, 0.78) 0%, rgba(15, 32, 70, 0.55) 50%, rgba(10, 22, 45, 0.35) 100%),
+                url('images/hero-conference.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            color: white;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            text-align: left;
+        }
+
+        .hero-inner {
+            max-width: 640px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+            color: white;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            margin-bottom: 2.25rem;
+            color: rgba(255, 255, 255, 0.92);
+            line-height: 1.7;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+        }
+
+        .hero .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero .btn-primary:hover {
+            background: var(--bg-blue);
+        }
+
+        .hero .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .hero .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-gray {
+            background: var(--bg-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        /* Pain Points Grid - brief */
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            margin-top: -2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pain-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .pain-icon {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 1rem;
+            border-radius: 12px;
+            background: var(--bg-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        .pain-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .pain-number {
+            display: inline-block;
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .pain-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .pain-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* Solution Feature Rows - detailed */
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-bottom: 6rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-row.reverse {
+            grid-template-columns: 1fr 1.25fr;
+        }
+
+        .feature-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-row.reverse .feature-visual {
+            order: 2;
+        }
+
+        .feature-visual {
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+        }
+
+        .feature-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .feature-label {
+            display: inline-block;
+            background: var(--bg-blue);
+            color: var(--primary-color);
+            padding: 0.375rem 0.875rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+        }
+
+        .feature-content h3 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        .feature-content p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.025rem;
+        }
+
+        .feature-metric {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            padding-top: 0.25rem;
+        }
+
+        .feature-metric strong {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        /* Accuracy Section */
+        .accuracy-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            margin: 0 auto 3rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accuracy-hero::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .accuracy-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+            border-radius: 50%;
+        }
+
+        /* Testimonial Carousel inside accuracy-hero */
+        .testimonial-carousel {
+            position: relative;
+            max-width: 760px;
+            margin: 0 auto;
+            min-height: 220px;
+            z-index: 1;
+        }
+
+        .testimonial-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+            pointer-events: none;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .testimonial-mark {
+            font-size: 3rem;
+            font-weight: 800;
+            opacity: 0.55;
+            line-height: 0.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-quote {
+            font-size: 1.375rem;
+            font-weight: 600;
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-author {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.625rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0;
+        }
+
+        .testimonial-dot.active {
+            background: white;
+            width: 32px;
+            border-radius: 5px;
+        }
+
+        .testimonial-dot:hover {
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .testimonial-dot.active:hover {
+            background: white;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pillar-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .pillar-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--bg-blue);
+            line-height: 1;
+        }
+
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: var(--bg-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.625rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .pillar-tag {
+            display: inline-block;
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.175rem;
+            font-weight: 700;
+            margin-bottom: 0.875rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .pillar-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Scenarios Section - Image header + bullet list */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .scenario-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.35s, box-shadow 0.35s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.28);
+        }
+
+        .scenario-header {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+
+        .scenario-header img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .scenario-card:hover .scenario-header img {
+            transform: scale(1.05);
+        }
+
+        .scenario-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                rgba(37, 99, 235, 0.88) 0%,
+                rgba(37, 99, 235, 0.55) 50%,
+                rgba(15, 32, 70, 0.45) 100%);
+        }
+
+        .scenario-header-content {
+            position: absolute;
+            inset: 0;
+            padding: 1.25rem 1.5rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 1;
+        }
+
+        .scenario-badge {
+            display: inline-block;
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-header h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.35;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .scenario-body {
+            padding: 1.75rem 1.5rem;
+            flex: 1;
+        }
+
+        .scenario-features {
+            list-style: none;
+        }
+
+        .scenario-features li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .scenario-features li::before {
+            content: "·";
+            color: var(--text-gray);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        /* Case Studies Section - Blog style */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .case-cover {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: var(--bg-gray);
+        }
+
+        .case-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .case-card:hover .case-cover img {
+            transform: scale(1.05);
+        }
+
+        .case-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .case-tag {
+            background: var(--bg-blue);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .case-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .case-excerpt {
+            color: var(--text-gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .case-readmore {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: auto;
+        }
+
+        .case-card:hover .case-readmore {
+            gap: 0.5rem;
+        }
+
+        /* Modal */
+        .case-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+        }
+
+        .case-modal.active {
+            display: block;
+        }
+
+        .case-modal-content {
+            background: white;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            animation: modalIn 0.3s ease-out;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .case-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .case-modal-cover {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            background: var(--bg-gray);
+        }
+
+        .case-modal-body {
+            padding: 2.5rem;
+        }
+
+        .case-modal-body .case-meta {
+            margin-bottom: 1rem;
+        }
+
+        .case-modal-body h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .case-modal-body .case-section-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .case-modal-body p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-modal-body .case-effects {
+            background: var(--bg-gray);
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            margin-top: 0.5rem;
+        }
+
+        .case-modal-body .case-effects ul {
+            list-style: none;
+        }
+
+        .case-modal-body .case-effects li {
+            padding: 0.5rem 0;
+            color: var(--text-dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .case-modal-body .case-effects li::before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .case-modal-body .case-quote {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            background: var(--bg-blue);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+
+        .case-modal-body .case-quote-author {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            font-style: normal;
+        }
+
+        /* VS Comparison Table */
+        .vs-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 2rem;
+        }
+
+        .vs-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .vs-table thead tr th:first-child {
+            border-top-left-radius: 20px;
+        }
+        .vs-table thead tr th:last-child {
+            border-top-right-radius: 20px;
+        }
+        .vs-table tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 20px;
+        }
+        .vs-table tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 20px;
+        }
+
+        .vs-table th,
+        .vs-table td {
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .vs-table thead th {
+            font-size: 1rem;
+            font-weight: 700;
+            background: var(--bg-gray);
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .vs-table thead .vs-item-col {
+            width: 28%;
+            color: var(--text-gray);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .vs-table thead .vs-felo-col {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            position: relative;
+            text-align: center;
+            font-size: 1.125rem;
+            overflow: visible;
+        }
+
+        .vs-table thead .vs-other-col {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .vs-felo-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FBBF24;
+            color: #78350F;
+            padding: 0.3rem 0.875rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .vs-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .vs-table tbody tr:hover {
+            background: rgba(239, 246, 255, 0.5);
+        }
+
+        .vs-table tbody td {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .vs-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vs-item {
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            font-size: 0.95rem;
+        }
+
+        .vs-item-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--bg-blue);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+
+        .vs-felo {
+            background: rgba(239, 246, 255, 0.5);
+            color: var(--primary-dark);
+            font-weight: 700;
+            text-align: center;
+            font-size: 1rem;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .vs-other {
+            color: var(--text-gray);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .vs-check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #10B981;
+            color: white;
+            font-weight: 700;
+            font-size: 0.875rem;
+            line-height: 1;
+        }
+
+        .vs-cross {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #E5E7EB;
+            color: #9CA3AF;
+            font-weight: 700;
+            font-size: 0.875rem;
+            line-height: 1;
+        }
+
+        .vs-note {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-gray);
+            margin-top: 0.2rem;
+        }
+
+        .vs-felo .vs-note {
+            color: var(--primary-color);
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-section .hero-cta {
+            justify-content: center;
+        }
+
+        .cta-section .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--bg-blue);
+            transform: translateY(-2px);
+        }
+
+        .cta-section .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .cta-section .btn-secondary:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0F172A;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer-brand .footer-logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .footer-brand .footer-logo span {
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.75);
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: white;
+            letter-spacing: 0.02em;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer li {
+            padding: 0.375rem 0;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.825rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-lang {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .scenarios-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cases-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pain-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-row {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 3.5rem;
+            }
+
+            .feature-row.reverse .feature-visual {
+                order: 0;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-quote {
+                font-size: 1.1rem;
+            }
+
+            .testimonial-carousel {
+                min-height: 260px;
+            }
+
+            .vs-table th,
+            .vs-table td {
+                padding: 0.875rem 0.625rem;
+                font-size: 0.875rem;
+            }
+
+            .vs-item-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.875rem;
+            }
+
+            .vs-item {
+                font-size: 0.875rem;
+                gap: 0.375rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 480px;
+                padding: 7rem 1.5rem 5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-modal-body {
+                padding: 1.5rem;
+            }
+
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.75rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="https://subtitles.felo.me/ja" class="nav-logo">
+                <img src="https://subtitles.felo.me/assets/images/image%206.svg" alt="">
+                <span class="nav-logo-text">Felo 字幕</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://subtitles.felo.me/ja">プロダクト</a></li>
+                <li><a href="https://subtitles.felo.me/ja/pricing">料金</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">ソリューション</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="/solutions/international-conference">国際会議</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://subtitles.felo.me/ja/showcase/fukuoka">導入事例</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">お役立ち情報</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="https://subtitles.felo.me/ja#reviews">レビュー</a></li>
+                        <li><a href="https://subtitles.felo.me/ja#comparison">比較</a></li>
+                        <li><a href="https://subtitles.felo.me/ja#faq">FAQ</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="/contact" class="btn btn-secondary">お問い合わせ</a>
+                <a href="https://subtitles.felo.me/ja/download" class="btn btn-primary">ダウンロード</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-inner">
+                <h1>通訳者なしで、<br>20言語の国際会議を当日開催</h1>
+                <p class="hero-subtitle">
+                    同時通訳コストを最大80%削減。専門用語にも対応するAIリアルタイム字幕で、英語が話せなくても世界中の参加者とその場で議論できる。
+                </p>
+                <div class="hero-cta">
+                    <a href="/download" class="btn btn-primary">資料を無料ダウンロード</a>
+                    <a href="/contact" class="btn btn-secondary">お問い合わせ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section (brief) -->
+    <section class="section section-gray" id="problems-solutions">
+        <div class="container">
+            <h2 class="section-title">国際会議運営で、多くの企業が直面する4つの課題</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 3h12l2 5-8 12L4 8z"/><line x1="4" y1="8" x2="20" y2="8"/><path d="M10 8l2-5 2 5"/></svg>
+                    </div>
+                    <span class="pain-number">課題 01</span>
+                    <h3>コストの壁</h3>
+                    <p>通訳者1日10〜20万円、<br>年間数百万円の予算負担</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <span class="pain-number">課題 02</span>
+                    <h3>言語の壁</h3>
+                    <p>英語以外の参加者が<br>議論に加われない</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <span class="pain-number">課題 03</span>
+                    <h3>記録の壁</h3>
+                    <p>多言語議事録の作成に<br>数時間〜半日かかる</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <span class="pain-number">課題 04</span>
+                    <h3>プライバシーの壁</h3>
+                    <p>機密会議でボット参加を<br>避けたいシーンがある</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section (detailed feature rows) -->
+    <section class="section" id="solutions">
+        <div class="container">
+            <h2 class="section-title">Felo Subtitleがすべて解決します</h2>
+
+            <!-- Feature 01: コスト -->
+            <div class="feature-row">
+                <div class="feature-visual">
+                    <img src="images/feature-cost.jpg" alt="コスト削減ダッシュボード">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-label">01 · コストの壁を解決</span>
+                    <h3>通訳者手配不要、コスト最大80%削減</h3>
+                    <p>通訳者の手配・待機コストがゼロに。定額サブスクリプションで回数制限なく利用でき、複数言語の同時字幕表示にも追加費用はかかりません。月2回の国際会議なら、従来の同時通訳コスト比で年間180万円以上の削減が可能です。</p>
+                </div>
+            </div>
+
+            <!-- Feature 02: 言語 -->
+            <div class="feature-row reverse">
+                <div class="feature-visual">
+                    <img src="images/feature-language.jpg" alt="多言語リアルタイム翻訳">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-label">02 · 言語の壁を解決</span>
+                    <h3>20言語対応、リアルタイム翻訳字幕</h3>
+                    <p>エンタープライズグレードの音声認識AIと最新LLMを組み合わせた独自のハイブリッド構成で、日英中韓露独仏西など20言語を自動認識。「逐語訳」＋「修正翻訳」の2段階処理で同時通訳レベルの精度を実現し、医療・法律・IT・製造など業界特有の専門用語にも対応します。</p>
+                </div>
+            </div>
+
+            <!-- Feature 03: 記録 -->
+            <div class="feature-row">
+                <div class="feature-visual">
+                    <img src="images/feature-minutes.jpg" alt="AI議事録自動生成">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-label">03 · 記録の壁を解決</span>
+                    <h3>AIが会議直後に多言語議事録を自動生成</h3>
+                    <p>LLMによる話者識別・要約機能で、誰が何を言ったかを自動整理。客観的な会議要約・タスク抽出にも対応し、会議終了と同時に正確な議事録を多言語で共有できます。</p>
+                </div>
+            </div>
+
+            <!-- Feature 04: プライバシー -->
+            <div class="feature-row reverse">
+                <div class="feature-visual">
+                    <img src="images/feature-privacy.jpg" alt="ボット不参加のプライベート翻訳">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-label">04 · プライバシーの壁を解決</span>
+                    <h3>ボット不参加のプライベート翻訳</h3>
+                    <p>デスクトップ音声を直接キャプチャする独自技術で、会議にボットを参加させる必要がありません。参加者リストに不明なアカウントが表示されないため、経営会議やM&A協議など機密会議でも安心して利用できます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accuracy Section -->
+    <section class="section" id="benefits">
+        <div class="container">
+            <h2 class="section-title">国際会議に求められる、業界最高水準の翻訳精度</h2>
+
+            <!-- Accuracy Hero: Testimonial Carousel -->
+            <div class="accuracy-hero">
+                <div class="testimonial-carousel" id="testimonialCarousel">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-mark">"</div>
+                        <div class="testimonial-quote">会議議事録作成時間が大幅削減。翻訳精度が高く、海外チームとの会議がスムーズに進行しています。</div>
+                        <div class="testimonial-author">— グローバル企業 プロジェクトマネージャー</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-mark">"</div>
+                        <div class="testimonial-quote">専門用語が多い研究会議でも、ほぼ正確に文字起こしできるので非常に助かっています。</div>
+                        <div class="testimonial-author">— 研究機関 研究者</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-mark">"</div>
+                        <div class="testimonial-quote">国際会議で英語理解が困難でしたが、翻訳字幕でリアルタイムに把握でき、議論に積極参加できました。</div>
+                        <div class="testimonial-author">— 国際機関 職員</div>
+                    </div>
+                </div>
+                <div class="testimonial-dots">
+                    <button class="testimonial-dot active" data-slide="0" aria-label="推薦語1"></button>
+                    <button class="testimonial-dot" data-slide="1" aria-label="推薦語2"></button>
+                    <button class="testimonial-dot" data-slide="2" aria-label="推薦語3"></button>
+                </div>
+            </div>
+
+            <!-- 3 Pillars -->
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-number">01</div>
+                    <div class="pillar-icon">🎙️</div>
+                    <span class="pillar-tag">音声認識 × LLM</span>
+                    <h3>エンタープライズ音声認識AI ×<br>最新LLMのハイブリッド構成</h3>
+                    <p>エンタープライズグレードの音声認識AIをベースに、最新の大規模言語モデル（LLM）で文脈補正を実施。安定性と最新AI精度を両立した独自の2段構成で、ノイズの多い会場音声やアクセントのばらつきにも強い認識率を実現します。</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-number">02</div>
+                    <div class="pillar-icon">⚡</div>
+                    <span class="pillar-tag">翻訳アルゴリズム</span>
+                    <h3>逐語訳＋修正翻訳の<br>2段階処理</h3>
+                    <p>会話の流れを途切らせない高速な「逐語訳」と、文脈を踏まえて文章全体を再翻訳する「修正翻訳」を並行実行。スピードと正確性を両立させた、Felo独自の翻訳エンジンです。</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-number">03</div>
+                    <div class="pillar-icon">📖</div>
+                    <span class="pillar-tag">カスタマイズ</span>
+                    <h3>業界特化の<br>専門用語辞書</h3>
+                    <p>医療・法律・IT・製造・建設など業界特有の専門用語を事前登録可能。社名・商品名・略語も正確に翻訳されるため、業界会議・技術セッションでも誤訳を最小化します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scenarios Section -->
+    <section class="section section-gray" id="scenarios">
+        <div class="container">
+            <h2 class="section-title">対面・オンライン・大規模イベント、すべての形式に対応</h2>
+            <div class="scenarios-grid">
+                <!-- Scenario 01 -->
+                <div class="scenario-card">
+                    <div class="scenario-header">
+                        <img src="images/scene-online.jpg" alt="海外拠点とのオンライン会議">
+                        <div class="scenario-overlay"></div>
+                        <div class="scenario-header-content">
+                            <span class="scenario-badge">シーン 01</span>
+                            <h3>海外拠点との<br>オンライン会議</h3>
+                        </div>
+                    </div>
+                    <div class="scenario-body">
+                        <ul class="scenario-features">
+                            <li>Zoom / Teams / Google Meet / Webex に対応</li>
+                            <li>1対1から複数メンバーまで対応</li>
+                            <li>会議中の字幕共有リンク発行</li>
+                            <li>会議後の議事録・タスク自動抽出</li>
+                            <li>ボット不参加のプライベート翻訳</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Scenario 02 -->
+                <div class="scenario-card">
+                    <div class="scenario-header">
+                        <img src="images/scene-seminar.jpg" alt="講演・セミナーでの同時通訳字幕">
+                        <div class="scenario-overlay"></div>
+                        <div class="scenario-header-content">
+                            <span class="scenario-badge">シーン 02</span>
+                            <h3>講演・セミナーでの<br>同時通訳字幕</h3>
+                        </div>
+                    </div>
+                    <div class="scenario-body">
+                        <ul class="scenario-features">
+                            <li>スクリーンにリアルタイム字幕を投影</li>
+                            <li>参加者はスマホでも視聴可能</li>
+                            <li>複数言語話者が同時に参加可能</li>
+                            <li>20言語に対応・多国籍参加可能</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Scenario 03 -->
+                <div class="scenario-card">
+                    <div class="scenario-header">
+                        <img src="images/scene-conference.jpg" alt="国際カンファレンス・イベント">
+                        <div class="scenario-overlay"></div>
+                        <div class="scenario-header-content">
+                            <span class="scenario-badge">シーン 03</span>
+                            <h3>国際カンファレンス・<br>イベント</h3>
+                        </div>
+                    </div>
+                    <div class="scenario-body">
+                        <ul class="scenario-features">
+                            <li>複数会場での同時運用可能</li>
+                            <li>ライブ配信での同時翻訳対応</li>
+                            <li>専門用語の正確な翻訳</li>
+                            <li>イベント後のアーカイブ作成</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section - Blog style -->
+    <section class="section" id="cases">
+        <div class="container">
+            <h2 class="section-title">国際会議での導入事例</h2>
+            <div class="cases-grid">
+                <!-- Case: 福岡 -->
+                <article class="case-card" data-case="fukuoka">
+                    <div class="case-cover">
+                        <img src="images/case-fukuoka-2.jpg" alt="World Workation Conference in 福岡">
+                    </div>
+                    <div class="case-body">
+                        <div class="case-meta">
+                            <span class="case-tag">自治体・観光</span>
+                            <span class="case-tag">国際カンファレンス</span>
+                        </div>
+                        <h3>World Workation Conference in 福岡</h3>
+                        <p class="case-excerpt">福岡市主催の国際カンファレンスで市長スピーチを含む複数セッションに採用。福岡空港・博多駅の観光案内所にも展開中。</p>
+                        <span class="case-readmore">詳しく見る →</span>
+                    </div>
+                </article>
+
+                <!-- Case: JCOM -->
+                <article class="case-card" data-case="jcom">
+                    <div class="case-cover">
+                        <img src="images/case-ssou-jcom-1.jpg" alt="JCOM 浅草サンバカーニバル 英語ライブ">
+                    </div>
+                    <div class="case-body">
+                        <div class="case-meta">
+                            <span class="case-tag">メディア・放送</span>
+                            <span class="case-tag">ライブ配信</span>
+                        </div>
+                        <h3>JCOM 浅草サンバカーニバル 英語ライブ</h3>
+                        <p class="case-excerpt">日本の伝統文化イベントの英語ライブ配信で採用。リアルタイム字幕により世界への発信を実現。</p>
+                        <span class="case-readmore">詳しく見る →</span>
+                    </div>
+                </article>
+
+                <!-- Case: 先進医療学会 -->
+                <article class="case-card" data-case="medical">
+                    <div class="case-cover">
+                        <img src="images/case-medical.jpg" alt="先進医療学会での同時通訳">
+                    </div>
+                    <div class="case-body">
+                        <div class="case-meta">
+                            <span class="case-tag">医療・研究</span>
+                            <span class="case-tag">国際学会</span>
+                        </div>
+                        <h3>先進医療学会での同時通訳</h3>
+                        <p class="case-excerpt">医療分野の高度な専門用語が多数登場する国際学会。専門用語辞書を事前登録することで、高精度な文字起こしと多言語翻訳を実現。</p>
+                        <span class="case-readmore">詳しく見る →</span>
+                    </div>
+                </article>
+
+                <!-- Case: Teamz -->
+                <article class="case-card" data-case="teamz">
+                    <div class="case-cover">
+                        <img src="images/case-teamz.jpg" alt="Teamz Summit 2025">
+                    </div>
+                    <div class="case-body">
+                        <div class="case-meta">
+                            <span class="case-tag">テック・Web3</span>
+                            <span class="case-tag">国際カンファレンス</span>
+                        </div>
+                        <h3>Teamz Summit 2025</h3>
+                        <p class="case-excerpt">アジア最大級のブロックチェーン・Web3カンファレンスで、複数セッションに日英中韓4言語の同時通訳字幕を提供。</p>
+                        <span class="case-readmore">詳しく見る →</span>
+                    </div>
+                </article>
+
+                <!-- Case: S創 -->
+                <article class="case-card" data-case="ssou">
+                    <div class="case-cover">
+                        <img src="images/case-ssou-jcom-2.jpg" alt="S創 上海・北京サミット">
+                    </div>
+                    <div class="case-body">
+                        <div class="case-meta">
+                            <span class="case-tag">スタートアップ</span>
+                            <span class="case-tag">日中カンファレンス</span>
+                        </div>
+                        <h3>S創 上海・北京サミット</h3>
+                        <p class="case-excerpt">上海5会場同時開催で採用後、北京会場でも継続採用。S創のオフィシャル翻訳ツールに認定された大規模イベント事例。</p>
+                        <span class="case-readmore">詳しく見る →</span>
+                    </div>
+                </article>
+
+                <!-- Case: 某大手通信企業 (ex-KDDI, anonymized) -->
+                <article class="case-card" data-case="telecom">
+                    <div class="case-cover">
+                        <img src="images/case-telecom.jpg" alt="某大手通信企業 上海カンファレンス">
+                    </div>
+                    <div class="case-body">
+                        <div class="case-meta">
+                            <span class="case-tag">通信業</span>
+                            <span class="case-tag">日中カンファレンス</span>
+                        </div>
+                        <h3>某大手通信企業 上海カンファレンス</h3>
+                        <p class="case-excerpt">上海で開催された日中合同カンファレンスにて、日中・中日のリアルタイム翻訳ツールとして採用。現在は日中間の社用ツールとして全社展開中。</p>
+                        <span class="case-readmore">詳しく見る →</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Modals -->
+    <div class="case-modal" id="modal-telecom">
+        <div class="case-modal-content">
+            <button class="case-modal-close" aria-label="閉じる">✕</button>
+            <img src="images/case-telecom.jpg" alt="" class="case-modal-cover">
+            <div class="case-modal-body">
+                <div class="case-meta">
+                    <span class="case-tag">通信業</span>
+                    <span class="case-tag">日中カンファレンス</span>
+                </div>
+                <h3>某大手通信企業 上海カンファレンス</h3>
+                <div class="case-section-title">活用シーン</div>
+                <p>上海で開催された日中合同カンファレンスにて、日中・中日のリアルタイム翻訳ツールとして採用。現地参加者とオンライン参加者が混在する環境で、大型スクリーンにリアルタイム字幕を投影し、双方向の同時通訳を実現しました。</p>
+                <div class="case-section-title">導入効果</div>
+                <div class="case-effects">
+                    <ul>
+                        <li>翻訳精度満足度 100%</li>
+                        <li>同時通訳コスト 80% 削減</li>
+                        <li>通訳者手配時間 0時間</li>
+                        <li>現在は日中間の社用ツールとして全社展開中</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-modal" id="modal-medical">
+        <div class="case-modal-content">
+            <button class="case-modal-close" aria-label="閉じる">✕</button>
+            <img src="images/case-medical.jpg" alt="" class="case-modal-cover">
+            <div class="case-modal-body">
+                <div class="case-meta">
+                    <span class="case-tag">医療・研究</span>
+                    <span class="case-tag">国際学会</span>
+                </div>
+                <h3>先進医療学会での同時通訳</h3>
+                <div class="case-section-title">活用シーン</div>
+                <p>医療分野の高度な専門用語（褥瘡、インシデント、ADL、ゲノム医療等）が多数登場する国際学会。AIとゲノム情報を用いた未来医療をテーマとする特別講演でも、事前に専門用語辞書を登録することで高精度な文字起こしと多言語翻訳を実現しました。</p>
+                <div class="case-section-title">導入効果</div>
+                <div class="case-effects">
+                    <ul>
+                        <li>医療専門用語の高精度翻訳</li>
+                        <li>議事録作成時間を大幅削減</li>
+                        <li>学会資料の多言語化も即時対応</li>
+                    </ul>
+                </div>
+                <div class="case-quote">
+                    「専門用語が多い研究会議でも、ほぼ正確に文字起こしできるので非常に助かっている」
+                    <div class="case-quote-author">— 研究機関 研究者</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-modal" id="modal-teamz">
+        <div class="case-modal-content">
+            <button class="case-modal-close" aria-label="閉じる">✕</button>
+            <img src="images/case-teamz.jpg" alt="" class="case-modal-cover">
+            <div class="case-modal-body">
+                <div class="case-meta">
+                    <span class="case-tag">テック・Web3</span>
+                    <span class="case-tag">国際カンファレンス</span>
+                </div>
+                <h3>Teamz Summit 2025</h3>
+                <div class="case-section-title">活用シーン</div>
+                <p>アジア最大級のブロックチェーン・Web3カンファレンスにて、複数セッションで同時通訳字幕を提供。日本語・英語・中国語・韓国語の4言語を同時処理し、グローバルな参加者が母国語で最新技術トレンドを理解できる環境を実現。Web3特有の専門用語にも対応しました。</p>
+                <div class="case-section-title">導入効果</div>
+                <div class="case-effects">
+                    <ul>
+                        <li>複数セッションで同時運用</li>
+                        <li>日英中韓 4言語に同時対応</li>
+                        <li>Web3・ブロックチェーン専門用語にも対応</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-modal" id="modal-ssou">
+        <div class="case-modal-content">
+            <button class="case-modal-close" aria-label="閉じる">✕</button>
+            <img src="images/case-ssou-jcom-2.jpg" alt="" class="case-modal-cover">
+            <div class="case-modal-body">
+                <div class="case-meta">
+                    <span class="case-tag">スタートアップ</span>
+                    <span class="case-tag">日中カンファレンス</span>
+                </div>
+                <h3>S創 上海・北京サミット</h3>
+                <div class="case-section-title">活用シーン</div>
+                <p>9月の上海会場（5会場同時開催）でFelo字幕を採用。大型スクリーンに中英日の多言語字幕を投影し、登壇者の発言をリアルタイムで翻訳。好評により10月の北京会場でも継続採用され、S創のオフィシャル翻訳ツールに認定。日中間の大規模スタートアップイベントにおける標準ツールとして定着しました。</p>
+                <div class="case-section-title">導入効果</div>
+                <div class="case-effects">
+                    <ul>
+                        <li>5会場で同時運用（上海）</li>
+                        <li>オフィシャル翻訳ツールに認定</li>
+                        <li>上海・北京の連続大型採用</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-modal" id="modal-fukuoka">
+        <div class="case-modal-content">
+            <button class="case-modal-close" aria-label="閉じる">✕</button>
+            <img src="images/case-fukuoka-2.jpg" alt="" class="case-modal-cover">
+            <div class="case-modal-body">
+                <div class="case-meta">
+                    <span class="case-tag">自治体・観光</span>
+                    <span class="case-tag">国際カンファレンス</span>
+                </div>
+                <h3>World Workation Conference in 福岡</h3>
+                <div class="case-section-title">活用シーン</div>
+                <p>福岡市主催の国際カンファレンスにて、福岡市長スピーチを含む複数セッションで採用。会議での活用実績が評価され、福岡空港・博多駅の観光案内所にもFelo Translatorを導入、訪日観光客との多言語コミュニケーションにも活用中です。株式会社QTnetを通じて提供されています。</p>
+                <div class="case-section-title">導入効果</div>
+                <div class="case-effects">
+                    <ul>
+                        <li>福岡市長スピーチの同時通訳で採用</li>
+                        <li>複数セッションで同時運用</li>
+                        <li>観光案内所でも継続運用中</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-modal" id="modal-jcom">
+        <div class="case-modal-content">
+            <button class="case-modal-close" aria-label="閉じる">✕</button>
+            <img src="images/case-ssou-jcom-1.jpg" alt="" class="case-modal-cover">
+            <div class="case-modal-body">
+                <div class="case-meta">
+                    <span class="case-tag">メディア・放送</span>
+                    <span class="case-tag">ライブ配信</span>
+                </div>
+                <h3>JCOM 浅草サンバカーニバル 英語ライブ</h3>
+                <div class="case-section-title">活用シーン</div>
+                <p>JCOM社による「浅草サンバカーニバル」英語ライブ放送にて、Felo字幕をリアルタイム英語字幕生成ツールとして採用。日本の伝統文化イベントをリアルタイムで英語圏に発信し、世界中の視聴者が日本の文化を楽しめる環境を実現しました。</p>
+                <div class="case-section-title">導入効果</div>
+                <div class="case-effects">
+                    <ul>
+                        <li>日本の伝統文化を英語でライブ発信</li>
+                        <li>字幕生成の人的コストを削減</li>
+                        <li>世界向け配信の標準ツールとして活用</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>国際会議での導入をご検討の方へ</h2>
+        <p>貴社の国際会議での活用方法を、具体的にご提案します。</p>
+        <div class="hero-cta">
+            <a href="/download" class="btn btn-primary">資料を無料ダウンロード</a>
+            <a href="/contact" class="btn btn-secondary">お問い合わせ</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="https://subtitles.felo.me/ja" class="footer-logo">
+                        <img src="https://subtitles.felo.me/assets/images/image%206.svg" alt="">
+                        <span>Felo 字幕</span>
+                    </a>
+                    <p class="footer-tagline">AI同時通訳・リアルタイム字幕で<br>言語の壁を越える</p>
+                    <div class="footer-social">
+                        <a href="https://x.com/felo_ai" aria-label="X (Twitter)">𝕏</a>
+                        <a href="https://www.youtube.com/@felo" aria-label="YouTube">▶</a>
+                        <a href="https://note.com/felo_ai" aria-label="Note">N</a>
+                        <a href="https://discord.gg/felo" aria-label="Discord">✉</a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h4>製品</h4>
+                        <ul>
+                            <li><a href="https://subtitles.felo.me/ja">機能一覧</a></li>
+                            <li><a href="https://subtitles.felo.me/ja/pricing">料金</a></li>
+                            <li><a href="https://subtitles.felo.me/ja/compare">他社比較</a></li>
+                            <li><a href="https://subtitles.felo.me/ja/download">ダウンロード</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>ソリューション</h4>
+                        <ul>
+                            <li><a href="/solutions/international-conference">国際会議</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>会社</h4>
+                        <ul>
+                            <li><a href="https://sparticle.com/">会社概要</a></li>
+                            <li><a href="https://felo.me/blog">ブログ</a></li>
+                            <li><a href="https://subtitles.felo.me/ja/partnership">パートナー募集</a></li>
+                            <li><a href="https://subtitles.felo.me/ja/invite">招待プログラム</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>法規</h4>
+                        <ul>
+                            <li><a href="/terms">利用規約</a></li>
+                            <li><a href="/privacy">プライバシーポリシー</a></li>
+                            <li><a href="/scta">特定商取引法</a></li>
+                            <li><a href="/security">セキュリティ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Sparticle Inc. All rights reserved.</span>
+                <span class="footer-lang">🌐 日本語</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Case modal toggle
+        document.querySelectorAll('.case-card[data-case]').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.getAttribute('data-case');
+                const modal = document.getElementById('modal-' + id);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        function closeCaseModal(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.case-modal').forEach(modal => {
+            // Close when clicking outside content
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeCaseModal(modal);
+            });
+            // Close button
+            const closeBtn = modal.querySelector('.case-modal-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => closeCaseModal(modal));
+            }
+        });
+
+        // ESC key closes any open modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.case-modal.active').forEach(closeCaseModal);
+            }
+        });
+
+        // Testimonial carousel
+        (function() {
+            const carousel = document.getElementById('testimonialCarousel');
+            if (!carousel) return;
+
+            const slides = carousel.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            let current = 0;
+            let timer = null;
+
+            function showSlide(i) {
+                slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+                dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+                current = i;
+            }
+
+            function next() {
+                showSlide((current + 1) % slides.length);
+            }
+
+            function startAuto() {
+                stopAuto();
+                timer = setInterval(next, 5500);
+            }
+
+            function stopAuto() {
+                if (timer) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+            }
+
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', () => {
+                    showSlide(idx);
+                    startAuto();
+                });
+            });
+
+            const heroCard = carousel.closest('.accuracy-hero');
+            if (heroCard) {
+                heroCard.addEventListener('mouseenter', stopAuto);
+                heroCard.addEventListener('mouseleave', startAuto);
+            }
+
+            startAuto();
+        })();
+    </script>
+</body>
+</html>
