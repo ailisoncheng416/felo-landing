@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felo Subtitles 導入事例｜国際会議・公共施設・学会・メディアの多言語化実績</title>
+  <meta name="description" content="Felo Subtitles の導入事例一覧。国立公共資訊図書館の国際フォーラム、福岡空港・博多駅の観光案内、先進医療学会、JCOM 浅草サンバカーニバル、Teamz Summit など、多様な現場での多言語字幕・リアルタイム翻訳活用実績。">
+  <meta name="keywords" content="Felo Subtitles, 導入事例, 国際会議, 多言語字幕, リアルタイム翻訳, AI同時通訳, NLPI, 福岡, 観光案内, 学会, ライブ配信, インバウンド">
+  <meta name="robots" content="index,follow">
+
+  <meta property="og:title" content="Felo Subtitles 導入事例｜多様な現場の多言語化実績">
+  <meta property="og:description" content="国際フォーラム・観光施設・学会・メディアまで、Felo Subtitles が選ばれる現場の事例一覧。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://subtitles.felo.me/ja/case-study">
+  <meta property="og:image" content="https://subtitles.felo.me/ja/case-study/og-image.jpg">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="Felo Subtitles">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Felo Subtitles 導入事例">
+  <meta name="twitter:description" content="国際フォーラム・観光・学会・メディアでの多言語字幕の実績一覧。">
+  <meta name="twitter:image" content="https://subtitles.felo.me/ja/case-study/og-image.jpg">
+
+  <link rel="canonical" href="https://subtitles.felo.me/ja/case-study">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#EFF6FF', 100:'#DBEAFE', 200:'#BFDBFE', 300:'#93C5FD', 400:'#60A5FA', 500:'#3B82F6', 600:'#2563EB', 700:'#1D4ED8', 800:'#1E40AF', 900:'#1E3A8A' }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+            jp: ['Noto Sans JP', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --sol-text: #0F172A; --sol-brand: #3B82F6; --sol-accent: #2563EB;
+      --sol-secondary: #475569; --sol-bg: #F1F5F9;
+      --sol-border: #E2E8F0;
+      --brand: #3B82F6; --brand-deep: #2563EB;
+      --brand-soft: rgba(59, 130, 246, 0.1);
+      --bg-base: #FFFFFF; --bg-soft: #F0F7FF;
+      --border: #DBEAFE; --border-strong: #93C5FD;
+      --text: #0F172A; --text-muted: #475569; --text-dim: #94A3B8;
+    }
+    body { font-family: 'Inter', 'Noto Sans JP', sans-serif; color: var(--text); }
+
+    /* ===== SITE HEADER ===== */
+    .site-header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid var(--sol-border); background: rgba(255,255,255,0.95); backdrop-filter: blur(4px); }
+    .site-header-inner { padding: 0 40px; display: flex; justify-content: center; }
+    .site-header-content { display: flex; height: 64px; width: 100%; max-width: 1200px; align-items: center; justify-content: space-between; }
+    .site-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--text); transition: opacity 0.2s; }
+    .site-logo:hover { opacity: 0.8; }
+    .site-logo img { height: 28px; width: auto; }
+    .site-logo-text { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.01em; }
+    .site-nav { display: flex; align-items: center; gap: 0; }
+    .nav-link { font-size: 14px; font-weight: 500; color: var(--sol-text); text-decoration: none; padding: 20px 16px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; background: none; border: none; font-family: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+    .nav-link:hover { color: var(--sol-brand); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > .nav-link::after { content: ""; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid currentColor; margin-left: 4px; opacity: 0.7; transition: transform 0.2s; }
+    .nav-dropdown:hover > .nav-link::after { transform: rotate(180deg); }
+    .nav-dropdown-menu { position: absolute; top: calc(100% - 4px); left: 50%; transform: translateX(-50%) translateY(-6px); display: none; background: #fff; border: 1px solid var(--sol-border); border-radius: 10px; box-shadow: 0 12px 28px rgba(0,0,0,0.08); padding: 6px; min-width: 180px; z-index: 100; }
+    .nav-dropdown-menu::before { content: ""; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+    .nav-dropdown:hover > .nav-dropdown-menu { display: block; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown-mega { padding: 12px; min-width: 340px; }
+    .nav-mega-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; transition: background 0.15s; white-space: normal; }
+    .nav-mega-item:hover { background: var(--brand-soft); }
+    .nav-mega-item:hover .nav-mega-title { color: var(--sol-brand); }
+    .nav-mega-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Material Symbols Rounded'; font-size: 20px; font-variation-settings: 'FILL' 1; }
+    .nav-mega-icon.tone-blue { background: #DBEAFE; color: #2563EB; }
+    .nav-mega-icon.tone-amber { background: #FEF3C7; color: #D97706; }
+    .nav-mega-icon.tone-purple { background: #EDE9FE; color: #7C3AED; }
+    .nav-mega-icon.tone-cyan { background: #CFFAFE; color: #0891B2; }
+    .nav-mega-icon.tone-green { background: #D1FAE5; color: #059669; }
+    .nav-mega-text { display: flex; flex-direction: column; min-width: 0; }
+    .nav-mega-title { font-size: 14px; font-weight: 700; color: #0f172a; line-height: 1.4; transition: color 0.15s; }
+    .nav-mega-desc { font-size: 12px; color: #64748b; margin-top: 3px; line-height: 1.5; }
+    .site-header-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-gradient-round { font-size: 13px; font-weight: 600; color: #fff; background: linear-gradient(135deg, #3B82F6, #60A5FA); border-radius: 9999px; padding: 7px 16px; text-decoration: none; border: none; transition: opacity 0.2s; }
+    .btn-gradient-round:hover { opacity: 0.88; }
+
+    /* ===== Cards ===== */
+    .icon { font-family: 'Material Symbols Rounded'; font-size: 24px; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+    .case-card { transition: all 0.3s ease; }
+    .case-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(59,130,246,0.20), 0 8px 16px rgba(0,0,0,0.06); }
+    .case-card-image { aspect-ratio: 16 / 10; overflow: hidden; }
+    .case-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .case-card:hover .case-card-image img { transform: scale(1.04); }
+
+    /* Decorative gradient cards (no real image) */
+    .case-card-gradient { aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .case-card-gradient .gradient-icon { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Material Symbols Rounded'; font-size: 40px; font-variation-settings: 'FILL' 1; backdrop-filter: blur(8px); }
+    .gradient-tech { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%); }
+    .gradient-event { background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 50%, #c4b5fd 100%); }
+    .gradient-medical { background: linear-gradient(135deg, #0e7490 0%, #06b6d4 50%, #67e8f9 100%); }
+    .gradient-media { background: linear-gradient(135deg, #c2410c 0%, #f97316 50%, #fdba74 100%); }
+    .gradient-startup { background: linear-gradient(135deg, #065f46 0%, #10b981 50%, #6ee7b7 100%); }
+    .gradient-business { background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #93c5fd 100%); }
+
+    .gradient-text { background: linear-gradient(135deg, #2563EB 0%, #60A5FA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* CTA section */
+    .cta-section { padding: 80px 2rem; text-align: center; background: linear-gradient(135deg, #1e40af, #1d4ed8 50%, #2563eb); }
+    .cta-section h2 { font-size: clamp(20px, 3vw, 30px); font-weight: 900; margin-bottom: 12px; color: #fff; font-family: 'Noto Sans JP', sans-serif; line-height: 1.5; }
+    .cta-section p { color: rgba(255,255,255,0.85); margin-bottom: 32px; max-width: 760px; margin-left: auto; margin-right: auto; font-size: 15px; line-height: 1.7; }
+    .cta-section .btn-primary-inv { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border: 2px solid #fff; border-radius: 9999px; background: #fff; color: #2563eb; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .cta-section .btn-primary-inv:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .cta-section .btn-outline-inv { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border: 2px solid rgba(255,255,255,0.7); border-radius: 9999px; background: transparent; color: #fff; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .cta-section .btn-outline-inv:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); }
+
+    /* Footer (Felo homepage parity) */
+    .site-footer { background: #f8fafc; color: #334155; padding: 60px 48px 30px; }
+    .site-footer-inner { max-width: 1200px; margin: 0 auto; }
+    .site-footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+    .footer-brand-logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #0f172a; margin-bottom: 16px; }
+    .footer-brand-logo img { width: 32px; height: 32px; }
+    .footer-brand-logo span { font-size: 18px; font-weight: 700; }
+    .footer-brand-desc { font-size: 13px; line-height: 1.7; color: #64748b; max-width: 280px; }
+    .site-footer h3 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 16px; }
+    .site-footer h3.mt { margin-top: 28px; }
+    .site-footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .site-footer ul a { font-size: 13px; color: #475569; text-decoration: none; transition: color 0.2s; }
+    .site-footer ul a:hover { color: var(--sol-brand); }
+    .site-footer ul a small { display: block; font-size: 11px; color: #94a3b8; margin-top: 3px; font-weight: 400; }
+    .footer-bottom-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 12px; color: #94a3b8; padding-top: 8px; }
+    .footer-bottom-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .footer-social { display: flex; gap: 14px; align-items: center; }
+    .footer-social a { width: 18px; height: 18px; color: #64748b; transition: color 0.2s; display: inline-block; }
+    .footer-social a:hover { color: var(--sol-brand); }
+    .footer-social svg { width: 100%; height: 100%; }
+    .footer-lang { display: inline-flex; align-items: center; gap: 6px; color: #64748b; font-size: 12px; }
+    @media (max-width: 960px) {
+      .site-footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .site-footer { padding: 48px 24px 24px; }
+      .case-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 600px) {
+      .site-footer-top { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+  <!-- JSON-LD: CollectionPage + ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Felo Subtitles 導入事例",
+    "description": "国際フォーラム・観光施設・学会・メディアでの Felo Subtitles 多言語字幕活用事例。",
+    "url": "https://subtitles.felo.me/ja/case-study",
+    "inLanguage": "ja",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Felo Subtitles",
+      "url": "https://subtitles.felo.me/"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": 8,
+      "itemListOrder": "https://schema.org/ItemListOrderDescending",
+      "itemListElement": [
+        {
+          "@type": "ListItem", "position": 1,
+          "item": {
+            "@type": "Article",
+            "@id": "https://subtitles.felo.me/ja/case-study/nlpi",
+            "url": "https://subtitles.felo.me/ja/case-study/nlpi",
+            "headline": "国立公共資訊図書館 APPLFTW 2026｜8カ国・地域 14名の国際フォーラムを多言語化",
+            "description": "アジア太平洋 8 カ国・地域 14 名の登壇者による国際フォーラムを、QR コード字幕共有とカスタム語彙表で多言語化。",
+            "inLanguage": "ja",
+            "about": { "@type": "Organization", "name": "国立公共資訊図書館" }
+          }
+        },
+        {
+          "@type": "ListItem", "position": 2,
+          "item": {
+            "@type": "Article",
+            "@id": "https://subtitles.felo.me/ja/showcase/fukuoka",
+            "url": "https://subtitles.felo.me/ja/showcase/fukuoka",
+            "headline": "福岡空港・博多駅 観光案内所｜20 言語対応のインバウンド支援",
+            "description": "福岡県 AI 活用事業として Felo Translator を導入。空港・駅の観光案内所でリアルタイム多言語翻訳を実現。",
+            "inLanguage": "ja",
+            "about": { "@type": "Organization", "name": "福岡県" }
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://subtitles.felo.me/ja/" },
+      { "@type": "ListItem", "position": 2, "name": "導入事例", "item": "https://subtitles.felo.me/ja/case-study" }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-white">
+
+  <!-- ===== SITE HEADER ===== -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="site-header-content">
+        <a href="https://subtitles.felo.me/ja/" class="site-logo">
+          <img src="https://subtitles.felo.me/assets/images/image%206.svg" alt="Felo 字幕">
+          <span class="site-logo-text">Felo 字幕</span>
+        </a>
+        <nav class="site-nav">
+          <div class="nav-dropdown">
+            <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="nav-link">ソリューション</a>
+            <div class="nav-dropdown-menu nav-dropdown-mega">
+              <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="nav-mega-item">
+                <span class="nav-mega-icon tone-blue">groups</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">国際会議</span>
+                  <span class="nav-mega-desc">多言語フォーラム・カンファレンスでの活用</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button type="button" class="nav-link">プロダクト</button>
+            <div class="nav-dropdown-menu nav-dropdown-mega">
+              <a href="https://subtitles.felo.me/ja/" class="nav-mega-item">
+                <span class="nav-mega-icon tone-blue">computer</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">Web 版</span>
+                  <span class="nav-mega-desc">PCで使えるリアルタイム字幕・翻訳ツール</span>
+                </span>
+              </a>
+              <a href="https://chromewebstore.google.com/detail/felo-subtitles-chatgpt-li/ponokiofkijoolhebggofhhibnafebna" target="_blank" rel="noopener" class="nav-mega-item">
+                <span class="nav-mega-icon tone-amber">extension</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">Chrome 拡張機能</span>
+                  <span class="nav-mega-desc">Google Meet・Zoom・Teams 上で字幕を表示</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <a href="https://subtitles.felo.me/ja/pricing" class="nav-link">料金</a>
+          <a href="case-study-nlpi.html" class="nav-link">導入事例</a>
+          <div class="nav-dropdown">
+            <button type="button" class="nav-link">リソース</button>
+            <div class="nav-dropdown-menu nav-dropdown-mega">
+              <a href="https://subtitles.felo.me/ja/compare" class="nav-mega-item">
+                <span class="nav-mega-icon tone-purple">compare_arrows</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">比較</span>
+                  <span class="nav-mega-desc">他社サービスとの機能・価格比較</span>
+                </span>
+              </a>
+              <a href="https://subtitles.felo.me/ja/#testimonials" class="nav-mega-item">
+                <span class="nav-mega-icon tone-amber">star</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">レビュー</span>
+                  <span class="nav-mega-desc">お客様の声と評価</span>
+                </span>
+              </a>
+              <a href="https://subtitles.felo.me/ja/#faq" class="nav-mega-item">
+                <span class="nav-mega-icon tone-cyan">help</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">FAQ</span>
+                  <span class="nav-mega-desc">よくあるご質問・利用ガイド</span>
+                </span>
+              </a>
+              <a href="https://subtitles.felo.me/blog" class="nav-mega-item">
+                <span class="nav-mega-icon tone-green">article</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">ブログ</span>
+                  <span class="nav-mega-desc">製品アップデート・活用ノウハウ</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </nav>
+        <div class="site-header-actions">
+          <a href="https://subtitles.felo.me/ja/#contact" class="btn-gradient-round">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="py-12 md:py-16 text-center border-b border-gray-200" style="background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59, 130, 246, 0.16) 0%, transparent 75%), linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, rgba(96, 165, 250, 0.02) 100%);">
+      <div class="max-w-5xl mx-auto px-6">
+        <p class="text-sm font-semibold text-primary-600 mb-3 tracking-wide">CASE STUDIES</p>
+        <h1 class="text-3xl lg:text-4xl font-extrabold leading-snug tracking-wide mb-3 font-jp">
+          <span class="gradient-text">Felo Subtitles 導入事例</span>
+          <span class="block mt-2 text-xl lg:text-2xl font-bold text-gray-700">国際会議・観光・学会・メディアの現場で。</span>
+        </h1>
+        <p class="text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          多言語字幕とリアルタイム翻訳が、組織や言語の壁を越えるあらゆる現場で活用されています。<br>
+          多様な業界・規模のお客様の取り組みと成果をご紹介します。
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== CASE CARDS ===== -->
+    <section id="cases" class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="case-grid grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+          <!-- Case 1: NLPI (Featured) -->
+          <a href="case-study-nlpi.html" class="case-card flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200" style="box-shadow: 0 4px 20px rgba(59,130,246,0.06);">
+            <div class="case-card-image bg-gray-100">
+              <img src="images/applftw-hero.jpg" alt="2026 APPLFTW 会場 — 主スクリーン・サブスクリーンに Felo 字幕が表示" width="1600" height="1068" fetchpriority="high" decoding="async">
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <span class="inline-flex items-center w-fit px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700 mb-4">国際フォーラム</span>
+              <p class="text-xs text-gray-500 mb-2">国立公共資訊図書館（NLPI）様</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 font-jp leading-tight">
+                <span class="text-primary-600">8カ国・地域 14名</span>の登壇者を、QR 字幕共有とカスタム語彙表で多言語化
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-5">
+                2026 Asia-Pacific Public Library Forum（APPLFTW）で、英中双方向のリアルタイム字幕を参加者全員のデバイスに同時配信。
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 mt-auto">
+                詳細を見る <span class="icon" style="font-size: 18px;">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Case 2: Fukuoka (Featured) -->
+          <a href="https://subtitles.felo.me/ja/showcase/fukuoka" class="case-card flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200" style="box-shadow: 0 4px 20px rgba(59,130,246,0.06);">
+            <div class="case-card-gradient gradient-tech">
+              <div class="gradient-icon">travel</div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <span class="inline-flex items-center w-fit px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700 mb-4">観光・インバウンド</span>
+              <p class="text-xs text-gray-500 mb-2">福岡県 AI 活用事業</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 font-jp leading-tight">
+                福岡空港・博多駅で <span class="text-primary-600">20 言語以上</span>のインバウンド支援
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-5">
+                福岡県の AI 活用事業に Felo Translator が正式採用。スタッフの語学力に依存しない 24 時間多言語対応を実現。
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 mt-auto">
+                詳細を見る <span class="icon" style="font-size: 18px;">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Case 3: World Workation Conference -->
+          <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="case-card flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200" style="box-shadow: 0 4px 20px rgba(59,130,246,0.06);">
+            <div class="case-card-gradient gradient-event">
+              <div class="gradient-icon">campaign</div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <span class="inline-flex items-center w-fit px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700 mb-4">自治体カンファレンス</span>
+              <p class="text-xs text-gray-500 mb-2">福岡市</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 font-jp leading-tight">
+                World Workation Conference で<span class="text-primary-600">市長スピーチの AI 同時通訳字幕</span>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-5">
+                福岡市長スピーチを含む複数セッションで AI 同時通訳字幕を採用。海外ゲストとの双方向コミュニケーションを実現。
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 mt-auto">
+                詳細を見る <span class="icon" style="font-size: 18px;">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Case 4: JCOM Asakusa Samba -->
+          <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="case-card flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200" style="box-shadow: 0 4px 20px rgba(59,130,246,0.06);">
+            <div class="case-card-gradient gradient-media">
+              <div class="gradient-icon">live_tv</div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <span class="inline-flex items-center w-fit px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700 mb-4">メディア・放送</span>
+              <p class="text-xs text-gray-500 mb-2">JCOM 株式会社</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 font-jp leading-tight">
+                浅草サンバカーニバル 英語ライブ配信で<span class="text-primary-600">リアルタイム字幕生成</span>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-5">
+                英語ライブ放送でリアルタイム字幕ツールとして採用。国際向け配信の標準ツールとして継続利用中。
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 mt-auto">
+                詳細を見る <span class="icon" style="font-size: 18px;">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Case 5: Medical Academy -->
+          <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="case-card flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200" style="box-shadow: 0 4px 20px rgba(59,130,246,0.06);">
+            <div class="case-card-gradient gradient-medical">
+              <div class="gradient-icon">medical_services</div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <span class="inline-flex items-center w-fit px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700 mb-4">医療・学会</span>
+              <p class="text-xs text-gray-500 mb-2">先進医療学会</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 font-jp leading-tight">
+                専門用語の多い研究会議でも、<span class="text-primary-600">ほぼ正確に文字起こし</span>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-5">
+                先進医療学会の国際セッションで Felo Subtitles の同時通訳を活用。専門用語の翻訳精度に高い評価。
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 mt-auto">
+                詳細を見る <span class="icon" style="font-size: 18px;">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Case 6: Teamz Summit -->
+          <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="case-card flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200" style="box-shadow: 0 4px 20px rgba(59,130,246,0.06);">
+            <div class="case-card-gradient gradient-tech">
+              <div class="gradient-icon">hub</div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <span class="inline-flex items-center w-fit px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700 mb-4">テック・Web3</span>
+              <p class="text-xs text-gray-500 mb-2">Teamz Summit 2025</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 font-jp leading-tight">
+                アジア最大級ブロックチェーン会議を <span class="text-primary-600">4 言語同時処理</span>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-5">
+                Teamz Summit 2025 の複数セッションで採用。4 言語同時処理で、各国参加者の理解を支えた。
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 mt-auto">
+                詳細を見る <span class="icon" style="font-size: 18px;">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Case 7: S創 Summit -->
+          <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="case-card flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200" style="box-shadow: 0 4px 20px rgba(59,130,246,0.06);">
+            <div class="case-card-gradient gradient-startup">
+              <div class="gradient-icon">trending_up</div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <span class="inline-flex items-center w-fit px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700 mb-4">スタートアップ日中</span>
+              <p class="text-xs text-gray-500 mb-2">S創 上海・北京サミット</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 font-jp leading-tight">
+                <span class="text-primary-600">上海 5 会場同時開催</span>でオフィシャル翻訳ツールに認定
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-5">
+                S 創 上海サミットで 5 会場同時運用、翌北京サミットでも継続採用。オフィシャル翻訳ツールに認定。
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 mt-auto">
+                詳細を見る <span class="icon" style="font-size: 18px;">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Case 8: Major Telecom (anonymous) -->
+          <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="case-card flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-200" style="box-shadow: 0 4px 20px rgba(59,130,246,0.06);">
+            <div class="case-card-gradient gradient-business">
+              <div class="gradient-icon">handshake</div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <span class="inline-flex items-center w-fit px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700 mb-4">通信業 日中</span>
+              <p class="text-xs text-gray-500 mb-2">某大手通信企業</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 font-jp leading-tight">
+                上海カンファレンスで<span class="text-primary-600">同時通訳コスト 80% 削減</span>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-5">
+                上海の日中合同カンファレンスで採用。対面・オンライン参加者の双方向同時通訳を実現。
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 mt-auto">
+                詳細を見る <span class="icon" style="font-size: 18px;">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GROWTH SIGNAL ===== -->
+    <section class="py-12 bg-white border-t border-gray-100">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <p class="text-sm text-gray-500 mb-2">― 導入事例は順次公開中 ―</p>
+        <p class="text-base text-gray-700 leading-relaxed">
+          国際会議・学会・観光・メディアまで、Felo Subtitles の活用シーンは広がり続けています。<br>
+          貴社・貴団体に近い規模の事例をお求めの方は、<a href="https://subtitles.felo.me/ja/#contact" class="text-primary-600 font-semibold hover:underline">お問い合わせ</a>より個別にご案内いたします。
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">あなたの組織の国際イベント・多言語セッションでも、<br>Felo Subtitles の活用をご検討ください</h2>
+      <p>
+        国際フォーラム・カンファレンス、企業の海外向けウェビナー、研修、社内会議など、あらゆる多言語アクセシビリティのニーズに対応します。
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://subtitles.felo.me/ja/" class="btn-primary-inv">
+          <span class="icon" style="font-size:18px;">download</span>
+          無料ダウンロード
+        </a>
+        <a href="https://subtitles.felo.me/ja/#contact" class="btn-outline-inv">
+          <span class="icon" style="font-size:18px;">mail</span>
+          お問い合わせ
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="site-footer-top">
+          <div class="footer-brand">
+            <a href="https://subtitles.felo.me/ja" class="footer-brand-logo">
+              <img src="https://subtitles.felo.me/assets/images/image%206.svg" alt="Felo 字幕">
+              <span>Felo 字幕</span>
+            </a>
+            <p class="footer-brand-desc">多言語AI文字起こし＆高精度翻訳ツール。会議・インタビュー・動画をリアルタイムで文字起こし、専門用語にも対応した高精度翻訳で国際的なコミュニケーション</p>
+          </div>
+          <div>
+            <h3>ソリューション</h3>
+            <ul>
+              <li><a href="https://subtitles.felo.me/ja/solutions/international-conference">国際会議</a></li>
+            </ul>
+            <h3 class="mt">リソース</h3>
+            <ul>
+              <li><a href="https://subtitles.felo.me/ja/showcase/fukuoka">導入事例</a></li>
+              <li><a href="https://subtitles.felo.me/ja/compare">比較</a></li>
+              <li><a href="https://subtitles.felo.me/ja/#testimonials">レビュー</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>会社</h3>
+            <ul>
+              <li><a href="https://www.sparticle.com/ja" target="_blank" rel="noopener">会社概要</a></li>
+              <li><a href="https://www.sparticle.com/#news-target" target="_blank" rel="noopener">ブログ</a></li>
+              <li><a href="https://subtitles.felo.me/ja/partnership">パートナー募集</a></li>
+              <li><a href="https://subtitles.felo.me/ja/invite">招待プログラム</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>法規</h3>
+            <ul>
+              <li><a href="https://accounts.felo.me/business/policies/terms-of-use-subtitle" target="_blank" rel="noopener">利用規約</a></li>
+              <li><a href="https://accounts.felo.me/business/policies/privacy-policy" target="_blank" rel="noopener">プライバシーポリシー</a></li>
+              <li><a href="https://accounts.felo.me/business/scta" target="_blank" rel="noopener">SCTA</a></li>
+              <li><a href="https://accounts.felo.me/business/security" target="_blank" rel="noopener">セキュリティ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>その他のプロダクト</h3>
+            <ul>
+              <li><a href="https://gbase.ai/" target="_blank" rel="noopener">GBase<small>AI知識エージェント</small></a></li>
+              <li><a href="https://cs.gbase.ai/" target="_blank" rel="noopener">GBase Support<small>カスタマーサポートAIエージェント</small></a></li>
+              <li><a href="https://onprem.gbase.ai/" target="_blank" rel="noopener">GBase OnPrem<small>オンプレミスAIエージェント</small></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom-row">
+          <p>© 2026 Sparticle Inc. All rights reserved.</p>
+          <div class="footer-bottom-right">
+            <div class="footer-social">
+              <a href="https://prtimes.jp/main/html/searchrlp/company_id/87269" target="_blank" rel="noopener" aria-label="PR TIMES" title="PR TIMES">
+                <svg viewBox="0 0 24 24"><text x="12" y="17" font-family="Georgia, serif" font-size="13" font-weight="900" text-anchor="middle" fill="currentColor">PR</text></svg>
+              </a>
+              <a href="https://x.com/GBaseHub" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X (Twitter)">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://jp.linkedin.com/company/sparticle-inc" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+              </a>
+              <a href="https://note.com/sparticle_gbase" target="_blank" rel="noopener" aria-label="note" title="note">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 .279c4.623 0 10.953-.235 15.498-.117 6.099.156 8.39 2.813 8.468 9.374.077 3.71 0 14.335 0 14.335h-6.598c0-9.296.04-10.83 0-13.759-.078-2.578-.814-3.807-2.795-4.041-2.097-.235-7.975-.04-7.975-.04v17.84H0Z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/@sparticle_gbase" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+            <span class="footer-lang">🌐 日本語</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
