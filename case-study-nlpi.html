@@ -85,6 +85,19 @@
     .nav-dropdown:hover > .nav-dropdown-menu { display: block; transform: translateX(-50%) translateY(0); }
     .nav-dropdown-item { display: block; padding: 8px 12px; border-radius: 6px; font-size: 13px; color: var(--sol-text); text-decoration: none; transition: background 0.15s; white-space: nowrap; }
     .nav-dropdown-item:hover { background: var(--brand-soft); color: var(--sol-brand); }
+    .nav-dropdown-mega { padding: 12px; min-width: 340px; }
+    .nav-mega-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; transition: background 0.15s; white-space: normal; }
+    .nav-mega-item:hover { background: var(--brand-soft); }
+    .nav-mega-item:hover .nav-mega-title { color: var(--sol-brand); }
+    .nav-mega-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Material Symbols Rounded'; font-size: 20px; font-variation-settings: 'FILL' 1; }
+    .nav-mega-icon.tone-blue { background: #DBEAFE; color: #2563EB; }
+    .nav-mega-icon.tone-amber { background: #FEF3C7; color: #D97706; }
+    .nav-mega-icon.tone-purple { background: #EDE9FE; color: #7C3AED; }
+    .nav-mega-icon.tone-cyan { background: #CFFAFE; color: #0891B2; }
+    .nav-mega-icon.tone-green { background: #D1FAE5; color: #059669; }
+    .nav-mega-text { display: flex; flex-direction: column; min-width: 0; }
+    .nav-mega-title { font-size: 14px; font-weight: 700; color: #0f172a; line-height: 1.4; transition: color 0.15s; }
+    .nav-mega-desc { font-size: 12px; color: #64748b; margin-top: 3px; line-height: 1.5; }
     .site-header-actions { display: flex; align-items: center; gap: 14px; }
     .nav-contact-link { font-size: 13px; font-weight: 500; color: var(--sol-text); text-decoration: none; padding: 4px 6px; transition: color 0.2s; }
     .nav-contact-link:hover { color: var(--sol-brand); }
@@ -223,26 +236,68 @@
         <nav class="site-nav">
           <div class="nav-dropdown">
             <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="nav-link">ソリューション</a>
-            <div class="nav-dropdown-menu">
-              <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="nav-dropdown-item">国際会議</a>
+            <div class="nav-dropdown-menu nav-dropdown-mega">
+              <a href="https://subtitles.felo.me/ja/solutions/international-conference" class="nav-mega-item">
+                <span class="nav-mega-icon tone-blue">groups</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">国際会議</span>
+                  <span class="nav-mega-desc">多言語フォーラム・カンファレンスでの活用</span>
+                </span>
+              </a>
             </div>
           </div>
           <div class="nav-dropdown">
             <button type="button" class="nav-link">プロダクト</button>
-            <div class="nav-dropdown-menu">
-              <a href="https://subtitles.felo.me/ja/" class="nav-dropdown-item">Web 版</a>
-              <a href="https://chromewebstore.google.com/detail/felo-subtitles-chatgpt-li/ponokiofkijoolhebggofhhibnafebna" target="_blank" rel="noopener" class="nav-dropdown-item">Chrome 拡張機能</a>
+            <div class="nav-dropdown-menu nav-dropdown-mega">
+              <a href="https://subtitles.felo.me/ja/" class="nav-mega-item">
+                <span class="nav-mega-icon tone-blue">computer</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">Web 版</span>
+                  <span class="nav-mega-desc">PCで使えるリアルタイム字幕・翻訳ツール</span>
+                </span>
+              </a>
+              <a href="https://chromewebstore.google.com/detail/felo-subtitles-chatgpt-li/ponokiofkijoolhebggofhhibnafebna" target="_blank" rel="noopener" class="nav-mega-item">
+                <span class="nav-mega-icon tone-amber">extension</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">Chrome 拡張機能</span>
+                  <span class="nav-mega-desc">Google Meet・Zoom・Teams 上で字幕を表示</span>
+                </span>
+              </a>
             </div>
           </div>
           <a href="https://subtitles.felo.me/ja/pricing" class="nav-link">料金</a>
           <a href="https://subtitles.felo.me/ja/showcase/fukuoka" class="nav-link">導入事例</a>
           <div class="nav-dropdown">
             <button type="button" class="nav-link">リソース</button>
-            <div class="nav-dropdown-menu">
-              <a href="https://subtitles.felo.me/ja/compare" class="nav-dropdown-item">比較</a>
-              <a href="https://subtitles.felo.me/ja/#testimonials" class="nav-dropdown-item">レビュー</a>
-              <a href="https://subtitles.felo.me/ja/#faq" class="nav-dropdown-item">FAQ</a>
-              <a href="https://subtitles.felo.me/blog" class="nav-dropdown-item">ブログ</a>
+            <div class="nav-dropdown-menu nav-dropdown-mega">
+              <a href="https://subtitles.felo.me/ja/compare" class="nav-mega-item">
+                <span class="nav-mega-icon tone-purple">compare_arrows</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">比較</span>
+                  <span class="nav-mega-desc">他社サービスとの機能・価格比較</span>
+                </span>
+              </a>
+              <a href="https://subtitles.felo.me/ja/#testimonials" class="nav-mega-item">
+                <span class="nav-mega-icon tone-amber">star</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">レビュー</span>
+                  <span class="nav-mega-desc">お客様の声と評価</span>
+                </span>
+              </a>
+              <a href="https://subtitles.felo.me/ja/#faq" class="nav-mega-item">
+                <span class="nav-mega-icon tone-cyan">help</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">FAQ</span>
+                  <span class="nav-mega-desc">よくあるご質問・利用ガイド</span>
+                </span>
+              </a>
+              <a href="https://subtitles.felo.me/blog" class="nav-mega-item">
+                <span class="nav-mega-icon tone-green">article</span>
+                <span class="nav-mega-text">
+                  <span class="nav-mega-title">ブログ</span>
+                  <span class="nav-mega-desc">製品アップデート・活用ノウハウ</span>
+                </span>
+              </a>
             </div>
           </div>
         </nav>
