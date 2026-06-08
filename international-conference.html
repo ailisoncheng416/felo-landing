@@ -1450,6 +1450,10 @@
                 align-items: flex-start;
             }
         }
+    
+    .case-card-link { transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; }
+    .case-card-link:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(59,130,246,0.18); }
+    .case-card-link:hover .case-readmore { color: #2563EB; }
     </style>
 
     <!-- Structured Data: SoftwareApplication -->
@@ -1847,7 +1851,7 @@
             <h2 class="section-title">国際会議での導入事例</h2>
             <div class="cases-grid">
                 <!-- Case: 福岡 -->
-                <article class="case-card" data-case="fukuoka">
+                <a class="case-card case-card-link" href="case-study-fukuoka-workation.html" data-case="fukuoka" style="display:block;text-decoration:none;color:inherit;">
                     <div class="case-cover">
                         <img src="images/case-fukuoka-2.jpg" alt="World Workation Conference in 福岡" width="1600" height="900" loading="lazy" decoding="async">
                     </div>
@@ -1860,10 +1864,10 @@
                         <p class="case-excerpt">福岡市主催の国際カンファレンスで、福岡市長スピーチを含む複数セッションにFelo Subtitleを採用。高精度なAI同時通訳字幕により、海外ゲストとの双方向コミュニケーションを実現しました。会議での活用実績が評価され、現在は福岡空港・博多駅の観光案内所にもFelo Translatorを展開し、訪日観光客対応にも活用されています(株式会社QTnet経由で提供)。</p>
                         <span class="case-readmore">詳しく見る →</span>
                     </div>
-                </article>
+                </a>
 
                 <!-- Case: JCOM -->
-                <article class="case-card" data-case="jcom">
+                <a class="case-card case-card-link" href="case-study-jcom-asakusa-samba.html" data-case="jcom" style="display:block;text-decoration:none;color:inherit;">
                     <div class="case-cover">
                         <img src="images/case-ssou-jcom-1.jpg" alt="JCOM 浅草サンバカーニバル 英語ライブ" width="1600" height="900" loading="lazy" decoding="async">
                     </div>
@@ -1876,10 +1880,10 @@
                         <p class="case-excerpt">JCOM社「浅草サンバカーニバル」英語ライブ放送にて、Felo Subtitleをリアルタイム英語字幕生成ツールとして採用。日本の伝統文化イベントを世界中の視聴者に英語で発信する体制を実現し、字幕生成の人的コストを大幅に削減。国際向けライブ配信の標準ツールとして継続利用中です。</p>
                         <span class="case-readmore">詳しく見る →</span>
                     </div>
-                </article>
+                </a>
 
                 <!-- Case: 先進医療学会 -->
-                <article class="case-card" data-case="medical">
+                <a class="case-card case-card-link" href="case-study-medical-academy.html" data-case="medical" style="display:block;text-decoration:none;color:inherit;">
                     <div class="case-cover">
                         <img src="images/case-medical.jpg" alt="先進医療学会での同時通訳" width="1600" height="900" loading="lazy" decoding="async">
                     </div>
@@ -1892,10 +1896,10 @@
                         <p class="case-excerpt">褥瘡・インシデント・ADL・ゲノム医療など高度な医療専門用語が多数登場する国際学会。AIとゲノム情報を用いた未来医療をテーマとする特別講演でも、専門用語辞書の事前登録により高精度な文字起こしと多言語翻訳を実現しました。「専門用語が多い研究会議でも、ほぼ正確に文字起こしできる」との評価をいただいています。</p>
                         <span class="case-readmore">詳しく見る →</span>
                     </div>
-                </article>
+                </a>
 
                 <!-- Case: Teamz -->
-                <article class="case-card" data-case="teamz">
+                <a class="case-card case-card-link" href="case-study-teamz-summit.html" data-case="teamz" style="display:block;text-decoration:none;color:inherit;">
                     <div class="case-cover">
                         <img src="images/case-teamz.jpg" alt="Teamz Summit 2025" width="1600" height="900" loading="lazy" decoding="async">
                     </div>
@@ -1908,10 +1912,10 @@
                         <p class="case-excerpt">アジア最大級のブロックチェーン・Web3カンファレンスにて、複数セッションで同時通訳字幕を提供。日本語・英語・中国語・韓国語の4言語を同時処理し、グローバル参加者が母国語で最新技術トレンドを理解できる環境を構築。Web3・ブロックチェーン特有の専門用語にも対応しました。</p>
                         <span class="case-readmore">詳しく見る →</span>
                     </div>
-                </article>
+                </a>
 
                 <!-- Case: S創 -->
-                <article class="case-card" data-case="ssou">
+                <a class="case-card case-card-link" href="case-study-s-creation-summit.html" data-case="ssou" style="display:block;text-decoration:none;color:inherit;">
                     <div class="case-cover">
                         <img src="images/case-ssou-jcom-2.jpg" alt="S創 上海・北京サミット" width="1600" height="900" loading="lazy" decoding="async">
                     </div>
@@ -1924,10 +1928,10 @@
                         <p class="case-excerpt">9月の上海会場(5会場同時開催)でFelo字幕を採用し、大型スクリーンに中英日多言語字幕を投影。好評により10月の北京会場でも継続採用され、S創オフィシャル翻訳ツールに認定。日中間の大規模スタートアップイベントにおける標準ツールとして定着しています。</p>
                         <span class="case-readmore">詳しく見る →</span>
                     </div>
-                </article>
+                </a>
 
                 <!-- Case: 某大手通信企業 (ex-KDDI, anonymized) -->
-                <article class="case-card" data-case="telecom">
+                <a class="case-card case-card-link" href="case-study-major-telecom.html" data-case="telecom" style="display:block;text-decoration:none;color:inherit;">
                     <div class="case-cover">
                         <img src="images/case-telecom.jpg" alt="某大手通信企業 上海カンファレンス" width="1600" height="900" loading="lazy" decoding="async">
                     </div>
@@ -1940,7 +1944,7 @@
                         <p class="case-excerpt">上海で開催された日中合同カンファレンスにて、日中・中日のリアルタイム翻訳ツールとして採用。大型スクリーンにリアルタイム字幕を投影し、現地参加者とオンライン参加者の双方向同時通訳を実現。翻訳精度満足度100%・同時通訳コスト80%削減を達成し、現在は日中間の社用ツールとして全社展開されています。</p>
                         <span class="case-readmore">詳しく見る →</span>
                     </div>
-                </article>
+                </a>
             </div>
         </div>
     </section>
